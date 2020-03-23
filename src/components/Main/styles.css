@@ -1,0 +1,108 @@
+.main {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 0 5%;
+  background: #f1f1f1;
+  position: relative;
+}
+
+.loading {
+  display: inline;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.todo {
+  width: 90%;
+}
+
+.todo h1 {
+  font-size: 2.5rem;
+  padding: 4rem 0;
+  text-align: center;
+}
+
+li {
+  width: 100%;
+  background: #fff;
+  box-shadow: 1px 1px 2px #00000030;
+  margin-bottom: 3rem;
+  cursor: pointer;
+  position: relative;
+}
+
+.clickable * {
+  padding: 2rem;
+}
+
+li .card-top {
+  width: 100%;
+  background: var(--secondary);
+  color: #fff;
+  font-size: 1.4rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+li .card-top, li .card-top span {
+  padding: 0.5rem 1rem;
+}
+
+li h2 {
+  font-size: 1.8rem;
+  padding: 1.5rem 2rem;
+}
+
+li p {
+  padding: 1.5rem 2rem;
+  font-size: 1.3rem;
+  color: #777;
+}
+
+li .conclude {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #ffffffce;
+  display: none;
+}
+
+li.clicked .conclude {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+li.clicked .conclude img {
+  margin-top: 5%;
+  width: 45%;
+  height: 45%;
+  padding: 0;
+}
+
+li.clicked .conclude span {
+  font-size: 1.6rem;
+}
+
+.open-on-classroom {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 2rem;
+  margin: 0;
+}
+
+.open-on-classroom span {
+  font-size: 1.4rem;
+  padding: 0 2rem;
+  color: blue;
+}
