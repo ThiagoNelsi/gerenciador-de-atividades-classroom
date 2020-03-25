@@ -1,25 +1,17 @@
-import React from 'react';
-import { GoogleLogin, GoogleLogout } from 'react-google-login';
-import axios from 'axios';
+import React, { useContext } from 'react';
+import { GoogleLogout } from 'react-google-login';
 
+import { appContext } from '../../context';
 import './styles.css';
 
 function Header() {
 
-  const isAuth = false;
+  const { setIsAuth, isAuth } = useContext(appContext);
 
-  async function responseGoogle({ code }) {
-    const { data } = await axios.post('https://oauth2.googleapis.com/token', {
-      code,
-      client_id: '550789364569-ppnjnsifhsj3e3vs97o5v38c5ect8r5u.apps.googleusercontent.com',
-      client_secret: 'EDCK2AZUCWmmWjWjmIPTD-Pk',
-      grant_type: 'authorization_code',
-      redirect_uri: 'http://localhost:3000'
-    })
-    localStorage.setItem('googleToken', JSON.stringify(data));
-  }
   function logout() {
-    localStorage.removeItem('googleToken');
+    localStorage.removeItem('code');
+    localStorage.removeItem('token');
+    setIsAuth(false);
   }
 
   return (
@@ -32,17 +24,7 @@ function Header() {
       </div>
       <div className='right'>
         {!isAuth
-          ? <GoogleLogin
-            className='button'
-            clientId="550789364569-ppnjnsifhsj3e3vs97o5v38c5ect8r5u.apps.googleusercontent.com"
-            buttonText="Entrar"
-            scope='https://www.googleapis.com/auth/classroom.courses.readonly https://www.googleapis.com/auth/classroom.coursework.me.readonly'
-            responseType='code'
-            onSuccess={responseGoogle}
-            onFailure={responseGoogle}
-            cookiePolicy={'single_host_origin'}
-            icon={false}
-          />
+          ? null
           : <GoogleLogout
             className='button'
             clientId="550789364569-ppnjnsifhsj3e3vs97o5v38c5ect8r5u.apps.googleusercontent.com"

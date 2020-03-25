@@ -1,11 +1,18 @@
-import { createContext, useState } from 'react';
+import React, { createContext, useState } from 'react';
 
-function Context({ children }) {
+export const appContext = createContext();
 
-  export const context = createContext();
+function ContextProvider({ children }) {
 
-  const state = {};
+  const [isAuth, setIsAuth] = useState('checking');
 
-  return <context.Provider value={state}>{children}</context.Provider>
+  const state = {
+    isAuth,
+    setIsAuth,
+  };
+
+  return <appContext.Provider value={state}>{children}</appContext.Provider>
 
 }
+
+export default ContextProvider;
