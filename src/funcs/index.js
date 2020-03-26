@@ -87,7 +87,7 @@ export async function getRefreshedToken(code, type) {
     client_id: '550789364569-ppnjnsifhsj3e3vs97o5v38c5ect8r5u.apps.googleusercontent.com',
     client_secret: 'EDCK2AZUCWmmWjWjmIPTD-Pk',
     grant_type: type === 'code' ? 'authorization_code' : 'refresh_token',
-    redirect_uri: 'http://localhost:3000'
+    redirect_uri: 'https://google-classroom.herokuapp.com'
   });
   return { created_at: new Date().getTime(), ...data };
 
